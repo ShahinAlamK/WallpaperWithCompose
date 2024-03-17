@@ -2,33 +2,56 @@ package com.example.wallpaper.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.example.wallpaper.R
 
-// Set of Material typography styles to start with
+
+val roboto = FontFamily(
+    Font(R.font.roboto, weight = FontWeight.Light),
+    Font(R.font.roboto_medium, weight = FontWeight.Medium),
+    Font(R.font.roboto_bold, weight = FontWeight.Bold),
+)
+
 val Typography = Typography(
     bodyLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
+        fontFamily = roboto,
+        fontWeight = FontWeight.Bold,
         fontSize = 16.sp,
-        lineHeight = 24.sp,
-        letterSpacing = 0.5.sp
-    )
-    /* Other default text styles to override
-    titleLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 22.sp,
-        lineHeight = 28.sp,
-        letterSpacing = 0.sp
     ),
-    labelSmall = TextStyle(
-        fontFamily = FontFamily.Default,
+    bodyMedium = TextStyle(
+        fontFamily = roboto,
+        fontWeight = FontWeight.Medium,
+        fontSize = 16.sp,
+    ),
+    bodySmall = TextStyle(
+        fontFamily = roboto,
+        fontWeight = FontWeight.Light,
+        fontSize = 16.sp,
+    ),
+
+    titleLarge = TextStyle(
+        fontFamily = roboto,
+        fontWeight = FontWeight.Bold,
+        fontSize = 22.sp,
+    ),
+    titleMedium = TextStyle(
+        fontFamily = roboto,
+        fontWeight = FontWeight.Medium,
+        fontSize = 22.sp,
+    ),
+
+    labelLarge = TextStyle(
+        fontFamily = roboto,
+        fontWeight = FontWeight.Bold,
+        fontSize = 11.sp,
+    ),
+    labelMedium = TextStyle(
+        fontFamily = roboto,
         fontWeight = FontWeight.Medium,
         fontSize = 11.sp,
-        lineHeight = 16.sp,
-        letterSpacing = 0.5.sp
-    )
-    */
+    ),
+
 )
