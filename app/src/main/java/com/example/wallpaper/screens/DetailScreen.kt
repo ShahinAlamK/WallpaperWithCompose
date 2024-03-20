@@ -7,8 +7,10 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -39,7 +41,7 @@ fun DetailScreen(nav: NavController) {
         )
 
         Row(
-            modifier = Modifier
+            modifier = Modifier.statusBarsPadding()
                 .fillMaxWidth()
                 .padding(horizontal = 15.dp, vertical = 15.dp),
             horizontalArrangement = Arrangement.SpaceBetween
@@ -65,6 +67,7 @@ fun DetailScreen(nav: NavController) {
 
         Column(
             modifier = Modifier
+                .navigationBarsPadding()
                 .align(Alignment.BottomCenter)
                 .padding(bottom = 30.dp),
             verticalArrangement = Arrangement.Center,
