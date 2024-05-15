@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.wallpaper.screens.DetailScreen
-import com.example.wallpaper.screens.HomeScreen
+import com.example.wallpaper.ui.screens.details.DetailScreen
+import com.example.wallpaper.ui.screens.home.HomeScreen
 
 @Composable
 fun Route(navHostController: NavHostController) {
@@ -15,9 +15,11 @@ fun Route(navHostController: NavHostController) {
         composable(RouteItem.Home.route){
             HomeScreen(nav = navHostController)
         }
+
         composable(RouteItem.Details.route){
             DetailScreen(nav = navHostController)
         }
+
 
     }
 }

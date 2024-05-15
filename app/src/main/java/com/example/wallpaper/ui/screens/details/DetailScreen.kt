@@ -1,4 +1,4 @@
-package com.example.wallpaper.screens
+package com.example.wallpaper.ui.screens.details
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box

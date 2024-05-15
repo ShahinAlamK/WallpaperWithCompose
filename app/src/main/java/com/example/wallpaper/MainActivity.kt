@@ -12,12 +12,18 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
 import com.example.wallpaper.navGraph.Route
+import com.example.wallpaper.network.viewmodels.WallpaperViewModel
 import com.example.wallpaper.ui.theme.WallpaperTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         enableEdgeToEdge(
             statusBarStyle = SystemBarStyle.light(
                 android.graphics.Color.TRANSPARENT,
@@ -28,6 +34,7 @@ class MainActivity : ComponentActivity() {
                 android.graphics.Color.TRANSPARENT,
             )
         )
+
         super.onCreate(savedInstanceState)
         setContent {
             WallpaperTheme {
