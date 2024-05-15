@@ -20,15 +20,21 @@ import javax.inject.Inject
 @HiltViewModel
 class WallpaperViewModel @Inject constructor(private val wallpaperRepo: WallpaperRepo) :
     ViewModel() {
-       private var category = list[0]
+    private var category = list[0]
 
     var isCategorySelected by mutableStateOf(0)
     fun updateCategory(newCategory: String) {
         category = newCategory
         fetchWallpaper()
     }
+
     var wallpaperStatus by mutableStateOf<WallpaperStatus>(WallpaperStatus.Loading)
 
+    var detailsImage by mutableStateOf<String>("")
+
+    fun updateDetailsImage(newDetailsImage: String) {
+        detailsImage = newDetailsImage
+    }
 
     fun fetchWallpaper() {
         val endPoint = "search/photos?page=1&query=$category&per_page=30&client_id=$API_KEY"
@@ -38,7 +44,7 @@ class WallpaperViewModel @Inject constructor(private val wallpaperRepo: Wallpape
                 wallpaperStatus = WallpaperStatus.Success(WallpaperState(data))
             } catch (e: Exception) {
                 wallpaperStatus = WallpaperStatus.Error(e.message.toString())
-            } catch (e: IOException){
+            } catch (e: IOException) {
                 wallpaperStatus = WallpaperStatus.Error(e.message.toString())
             }
         }

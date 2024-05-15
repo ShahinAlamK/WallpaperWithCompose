@@ -27,7 +27,9 @@ import com.example.wallpaper.network.viewmodels.WallpaperViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(nav: NavController) {
+fun HomeScreen(
+    onNavigateToDetail: (String) -> Unit,
+) {
     val wallpaperViewModel: WallpaperViewModel = hiltViewModel()
     val wallpaperSate = wallpaperViewModel.wallpaperStatus
 
@@ -83,7 +85,7 @@ fun HomeScreen(nav: NavController) {
                 Text(text = "Empty")
             }
             is WallpaperStatus.Success ->{
-                Wallpaper(paddingValues, nav = nav, wallpaperState = wallpaperSate.data)
+                Wallpaper(paddingValues, onNavigateTO = onNavigateToDetail, wallpaperState = wallpaperSate.data)
             }
         }
 

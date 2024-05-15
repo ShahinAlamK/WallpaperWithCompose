@@ -30,7 +30,7 @@ import com.example.wallpaper.network.viewmodels.WallpaperViewModel
 @Composable
 fun Wallpaper(
     paddingValues: PaddingValues,
-    nav: NavController,
+    onNavigateTO: (String) -> Unit,
     wallpaperState: WallpaperState
 ) {
 
@@ -42,7 +42,7 @@ fun Wallpaper(
         Spacer(modifier = Modifier.size(10.dp))
         Category()
         Spacer(modifier = Modifier.size(20.dp))
-        LoadWallpaper(nav = nav, wallpaperList = wallpaperState)
+        LoadWallpaper(onNavigateTO = onNavigateTO, wallpaperList = wallpaperState)
     }
 
 
@@ -50,7 +50,10 @@ fun Wallpaper(
 
 
 @Composable
-fun LoadWallpaper(nav: NavController, wallpaperList: WallpaperState) {
+fun LoadWallpaper(
+    onNavigateTO: (String) -> Unit,
+    wallpaperList: WallpaperState
+) {
 
     val state = rememberLazyStaggeredGridState()
     LazyVerticalStaggeredGrid(
@@ -64,9 +67,7 @@ fun LoadWallpaper(nav: NavController, wallpaperList: WallpaperState) {
             val image = wallpaperList.wallpaper.results[index]!!
             ImageCard(
                 imageUrl =image.urls?.regular!!,
-                onClick = {
-                    nav.navigate(RouteItem.Details.route)
-                }
+                onClick = {onNavigateTO(image.urls.full!!)}
             )
 
         }
