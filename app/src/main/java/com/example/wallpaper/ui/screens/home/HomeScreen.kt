@@ -29,6 +29,7 @@ import com.example.wallpaper.network.viewmodels.WallpaperViewModel
 @Composable
 fun HomeScreen(
     onNavigateToDetail: (String) -> Unit,
+    onNavigateToSearch: () -> Unit
 ) {
     val wallpaperViewModel: WallpaperViewModel = hiltViewModel()
     val wallpaperSate = wallpaperViewModel.wallpaperStatus
@@ -65,7 +66,7 @@ fun HomeScreen(
                                 contentDescription = ""
                             )
                         },
-                        onClick = { /*TODO*/ }
+                        onClick = onNavigateToSearch
                     )
                     Spacer(modifier = Modifier.size(10.dp))
                 }
@@ -88,7 +89,6 @@ fun HomeScreen(
                 Wallpaper(paddingValues, onNavigateTO = onNavigateToDetail, wallpaperState = wallpaperSate.data)
             }
         }
-
 
     }
 }

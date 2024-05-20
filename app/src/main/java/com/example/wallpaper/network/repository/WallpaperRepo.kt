@@ -10,5 +10,8 @@ class WallpaperRepo @Inject constructor(private val wallpaperService: WallpaperS
         return wallpaperService.fetchWallpaper(endPoints)
     }
 
+    suspend fun searchWallpaper(search: String): WallpaperModel {
+        return wallpaperService.searchWallpaper(search)
+    }
 
 }

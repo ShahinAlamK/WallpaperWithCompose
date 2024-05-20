@@ -12,6 +12,7 @@ import androidx.navigation.navArgument
 import com.example.wallpaper.network.viewmodels.WallpaperViewModel
 import com.example.wallpaper.ui.screens.details.DetailScreen
 import com.example.wallpaper.ui.screens.home.HomeScreen
+import com.example.wallpaper.ui.screens.search.SearchScreen
 
 @Composable
 fun Route(navHostController: NavHostController = rememberNavController()) {
@@ -19,15 +20,31 @@ fun Route(navHostController: NavHostController = rememberNavController()) {
 
     NavHost(navController = navHostController, startDestination = RouteItem.Home.route) {
 
+        //Home Screen
         composable(RouteItem.Home.route) {
             HomeScreen(
+                onNavigateToSearch = { navHostController.navigate(RouteItem.Search.route)},
                 onNavigateToDetail = {
                     navHostController.navigate(RouteItem.Details.route)
                     wallpaperViewModel.updateDetailsImage(it)
                 })
         }
 
-        composable(RouteItem.Details.route,
+        //Search Screen
+        composable(
+            RouteItem.Search.route
+        ) {
+            SearchScreen(
+                onNavigateToDetail = {
+                    navHostController.navigate(RouteItem.Details.route)
+                    wallpaperViewModel.updateDetailsImage(it)
+                }
+            )
+        }
+
+        //Details Screen
+        composable(
+            RouteItem.Details.route,
         ) {
             val id = wallpaperViewModel.detailsImage
             DetailScreen(

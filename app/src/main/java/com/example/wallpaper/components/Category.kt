@@ -39,7 +39,6 @@ fun Category(modifier: Modifier = Modifier) {
                     )
                     .clickable {
                         vm.isCategorySelected = it
-                        vm.fetchWallpaper()
                         vm.updateCategory(list[it])
                     }
                     .padding(horizontal = 15.dp, vertical = 10.dp),

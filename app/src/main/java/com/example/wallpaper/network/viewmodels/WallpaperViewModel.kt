@@ -2,6 +2,7 @@ package com.example.wallpaper.network.viewmodels
 
 import android.util.Log
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
@@ -22,7 +23,7 @@ class WallpaperViewModel @Inject constructor(private val wallpaperRepo: Wallpape
     ViewModel() {
     private var category = list[0]
 
-    var isCategorySelected by mutableStateOf(0)
+    var isCategorySelected by mutableIntStateOf(0)
     fun updateCategory(newCategory: String) {
         category = newCategory
         fetchWallpaper()
@@ -30,7 +31,7 @@ class WallpaperViewModel @Inject constructor(private val wallpaperRepo: Wallpape
 
     var wallpaperStatus by mutableStateOf<WallpaperStatus>(WallpaperStatus.Loading)
 
-    var detailsImage by mutableStateOf<String>("")
+    var detailsImage by mutableStateOf("")
 
     fun updateDetailsImage(newDetailsImage: String) {
         detailsImage = newDetailsImage

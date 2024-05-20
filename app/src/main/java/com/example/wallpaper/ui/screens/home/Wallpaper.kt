@@ -51,6 +51,7 @@ fun Wallpaper(
 
 @Composable
 fun LoadWallpaper(
+    modifier: Modifier = Modifier,
     onNavigateTO: (String) -> Unit,
     wallpaperList: WallpaperState
 ) {
@@ -58,7 +59,7 @@ fun LoadWallpaper(
     val state = rememberLazyStaggeredGridState()
     LazyVerticalStaggeredGrid(
         state = state,
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .padding(horizontal = 10.dp),
         columns = StaggeredGridCells.Fixed(2)
@@ -67,7 +68,7 @@ fun LoadWallpaper(
             val image = wallpaperList.wallpaper.results[index]!!
             ImageCard(
                 imageUrl =image.urls?.regular!!,
-                onClick = {onNavigateTO(image.urls.full!!)}
+                onClick = {onNavigateTO(image.urls.raw!!)}
             )
 
         }
