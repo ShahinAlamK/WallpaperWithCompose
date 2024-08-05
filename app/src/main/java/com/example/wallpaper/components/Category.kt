@@ -15,9 +15,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.wallpaper.network.viewmodels.WallpaperViewModel
+import com.example.wallpaper.presentation.home.WallpaperViewModel
 
-val list = listOf("Animals", "Sports", "Travel", "HD Wallpaper", "4K Wallpaper")
+val list = listOf("Nature","Technology","Animals", "Sports", "Travel", "HD Wallpaper", "4K Wallpaper")
 
 @Composable
 fun Category(modifier: Modifier = Modifier) {

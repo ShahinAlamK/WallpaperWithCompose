@@ -1,4 +1,4 @@
-package com.example.wallpaper.navGraph
+package com.example.wallpaper.navigation
 
 sealed class RouteItem(val route:String) {
     data object Home:RouteItem("home_screen")

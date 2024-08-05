@@ -1,4 +1,4 @@
-package com.example.wallpaper.ui.screens.details
+package com.example.wallpaper.presentation.details
 
 import android.Manifest
 import android.app.DownloadManager
@@ -35,14 +35,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
 import coil.ImageLoader
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.wallpaper.R
 import com.example.wallpaper.components.RoundIcon
-import com.example.wallpaper.network.viewmodels.WallpaperViewModel
 
 @Composable
 fun DetailScreen(
@@ -130,7 +127,7 @@ fun DetailScreen(
             ),
                 shape = MaterialTheme.shapes.extraLarge,
                 elevation = ButtonDefaults.elevatedButtonElevation(0.dp),
-                onClick = {  downloading(id,"",context)}) {
+                onClick = {  downloading(id,"",context) }) {
                 Text(text = "Set Wallpaper", style = MaterialTheme.typography.bodyMedium)
             }
             Spacer(modifier = Modifier.size(10.dp))

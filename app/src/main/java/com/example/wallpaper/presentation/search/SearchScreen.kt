@@ -1,4 +1,4 @@
-package com.example.wallpaper.ui.screens.search
+package com.example.wallpaper.presentation.search
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -25,10 +25,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.wallpaper.components.Error
 import com.example.wallpaper.components.LoadingComponent
-import com.example.wallpaper.network.utils.WallpaperStatus
-import com.example.wallpaper.network.viewmodels.SearchViewModel
-import com.example.wallpaper.ui.screens.home.LoadWallpaper
-import com.example.wallpaper.ui.screens.home.Wallpaper
+import com.example.wallpaper.common.Resource
+import com.example.wallpaper.presentation.home.LoadWallpaper
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -36,7 +34,7 @@ import com.example.wallpaper.ui.screens.home.Wallpaper
 fun SearchScreen(
     onNavigateToDetail: (String) ->Unit
 ) {
-    val vm: SearchViewModel = hiltViewModel()
+/*    val vm: SearchViewModel = hiltViewModel()
 
     LaunchedEffect(key1 = true) {
         vm.getSearchWallpaper()
@@ -83,24 +81,24 @@ fun SearchScreen(
         },
     ) {
         when (val response = vm.wallpaperStatus) {
-            is WallpaperStatus.Loading -> {
+*//*            is Resource.Loading -> {
                 LoadingComponent()
             }
 
-            is WallpaperStatus.Error -> {
+            is Resource.Error -> {
                 Error(error = vm.wallpaperStatus.toString())
             }
 
-            is WallpaperStatus.Empty -> {
+            is Resource.Empty -> {
                 Text(text = "Empty")
             }
-            is WallpaperStatus.Success ->{
+            is Resource.Success ->{
                 LoadWallpaper(
                     modifier = Modifier.padding(it),
                     wallpaperList = response.data,
                     onNavigateTO = onNavigateToDetail
                 )
-            }
+            }*//*
         }
-    }
+    }*/
 }

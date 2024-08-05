@@ -1,4 +1,4 @@
-package com.example.wallpaper.ui.screens.home
+package com.example.wallpaper.presentation.home
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -9,29 +9,18 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.lazy.staggeredgrid.rememberLazyStaggeredGridState
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
 import com.example.wallpaper.components.Category
-import com.example.wallpaper.components.Error
 import com.example.wallpaper.components.ImageCard
-import com.example.wallpaper.components.LoadingComponent
-import com.example.wallpaper.navGraph.RouteItem
-import com.example.wallpaper.network.models.WallpaperModel
-import com.example.wallpaper.network.utils.WallpaperStatus
-import com.example.wallpaper.network.viewmodels.WallpaperState
-import com.example.wallpaper.network.viewmodels.WallpaperViewModel
 
 
 @Composable
 fun Wallpaper(
     paddingValues: PaddingValues,
     onNavigateTO: (String) -> Unit,
-    wallpaperState: WallpaperState
+    wallpaperState: HomeUiState
 ) {
 
     Column(
@@ -53,7 +42,7 @@ fun Wallpaper(
 fun LoadWallpaper(
     modifier: Modifier = Modifier,
     onNavigateTO: (String) -> Unit,
-    wallpaperList: WallpaperState
+    wallpaperList: HomeUiState
 ) {
 
     val state = rememberLazyStaggeredGridState()
@@ -64,16 +53,13 @@ fun LoadWallpaper(
             .padding(horizontal = 10.dp),
         columns = StaggeredGridCells.Fixed(2)
     ) {
-        items(wallpaperList.wallpaper.results?.size!!) { index ->
-            val image = wallpaperList.wallpaper.results[index]!!
+        items(wallpaperList.dataList.size) { index ->
+            val image = wallpaperList.dataList[index]
             ImageCard(
-                imageUrl =image.urls?.regular!!,
-                onClick = {onNavigateTO(image.urls.raw!!)}
+                imageUrl = image.urls!!.thumb!!,
+                onClick = { onNavigateTO(image.urls.regular!!) }
             )
-
         }
-
-
     }
 }
 

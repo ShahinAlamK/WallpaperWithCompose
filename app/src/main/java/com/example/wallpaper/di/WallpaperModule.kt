@@ -1,7 +1,9 @@
-package com.example.wallpaper.network.di
+package com.example.wallpaper.di
 
-import com.example.wallpaper.network.services.WallpaperService
-import com.example.wallpaper.network.utils.UtilsApi
+import com.example.wallpaper.data.remote.UnsplashApi
+import com.example.wallpaper.common.UtilsApi
+import com.example.wallpaper.data.repository.WallpaperRepoImpl
+import com.example.wallpaper.domain.repository.WallpaperRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,8 +26,14 @@ class WallpaperModule {
 
     @Provides
     @Singleton
-    fun providesWallpaperApi(retrofit: Retrofit): WallpaperService {
-        return retrofit.create(WallpaperService::class.java)
+    fun providesWallpaperApi(retrofit: Retrofit): UnsplashApi {
+        return retrofit.create(UnsplashApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun providesWallpaperRepository(wallpaperService: UnsplashApi): WallpaperRepository {
+        return WallpaperRepoImpl(wallpaperService)
     }
 
 }
